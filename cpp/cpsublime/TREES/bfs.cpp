@@ -1,0 +1,52 @@
+
+
+struct TreeNode
+{
+	int val;
+	struct TreeNode *left;
+	struct TreeNode *right;
+
+	Node(int n)
+	{
+		val = n;
+		left = right = null;
+	}
+};
+
+void bfs(TreeNode *root) {
+	vector<vector<int>>ans;
+
+	if (root == null)
+		return ans;
+
+	queue<TreeNode*>q;
+	q.push(root);
+
+	while (!q.empty())
+	{
+		int size = q.size();
+		vector<int>level;
+
+		for (int i = 0; i < size; ++i)
+		{
+			TreeNode* node = q.front();
+			q.pop();
+			if (node->left != NULL)q.push(node->left);
+
+			if (node->right != NULL)q.push(node->right);
+
+			level.pb(node->val);
+		}
+		ans.pb(level);
+	}
+
+	return ans;
+}
+
+
+
+16) DIAMETER OF BINARY TREE
+
+
+
+
